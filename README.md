@@ -5,6 +5,11 @@ written in TML Pascal; "Distribute freely but do not sell"), recovered from
 the original program and rebuilt in C++ with a thin Qt 6 shell. It keeps the
 original's look: the 320×200 IIgs screen with the game's own palette. 
 
+<p align="center">
+  <img src="docs/screenshots/new-game.png" alt="The score card at the start of a new game" width="49%">
+  <img src="docs/screenshots/score-possibilities.png" alt="Score Possibilities showing what each open category would score" width="49%">
+</p>
+
 ## How to play
 
 The default is the original's: **Player #1 (you) against Player #2 (the

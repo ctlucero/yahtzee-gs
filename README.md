@@ -91,19 +91,6 @@ system-wide install, use `-DCMAKE_INSTALL_PREFIX=/usr/local` and
   `PYTHONPATH=tools`.
 - `docs/RECOVERED.md` what was learned from the disassembly
 
-## Making a release
-
-Update the version in `CMakeLists.txt` and add a `<release>` entry to
-`packaging/io.github.yahtzee_gs.Yahtzee.metainfo.xml`, commit, then push a
-tag:
-
-```sh
-git tag v1.2
-git push origin v1.2
-```
-
-GitHub Actions builds and tests it, then creates the release with the
-download attached.
 
 ## License
 

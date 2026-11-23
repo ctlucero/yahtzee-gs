@@ -1,0 +1,10 @@
+[Desktop Entry]
+Type=Application
+Name=Yahtzee
+GenericName=Dice Game
+Comment=The classic dice game, ported from the Apple IIgs
+Exec=yahtzee-gs
+Icon=io.github.yahtzee_gs.Yahtzee
+Terminal=false
+Categories=Game;BoardGame;
+Keywords=dice;yahtzee;apple;iigs;

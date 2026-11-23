@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>io.github.yahtzee_gs.Yahtzee</id>
+  <name>Yahtzee</name>
+  <summary>The classic dice game, ported from the Apple IIgs</summary>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>LicenseRef-freeware</project_license>
+  <description>
+    <p>
+      A faithful native port of YAHTZEE v1.1 for the Apple IIgs, written by
+      David W. Buell in 1988 in TML Pascal and distributed as freeware
+      ("Distribute freely but do not sell"). The rules, the computer
+      opponent and the screen were recovered from the original program.
+    </p>
+    <p>
+      Play against the computer or with up to four players, over a series of
+      games, on the original's green-felt IIgs screen.
+    </p>
+  </description>
+  <launchable type="desktop-id">io.github.yahtzee_gs.Yahtzee.desktop</launchable>
+  <categories><category>Game</category><category>BoardGame</category></categories>
+  <content_rating type="oars-1.1"/>
+  <releases>
+    <release version="0.4.0" date="2026-10-24"><description><p>New Game, Options... with an optional Yahtzee Bonus rule and a Modern Roll dice source. Fixes leftover digits when a score total is redrawn.</p></description></release>
+    <release version="0.3.0" date="2026-10-02"><description><p>First playable build.</p></description></release>
+  </releases>
+</component>

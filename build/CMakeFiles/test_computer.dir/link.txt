@@ -1,0 +1,1 @@
+/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/test_computer.dir/link.d CMakeFiles/test_computer.dir/tests/test_computer.cpp.o -o test_computer  libyahtzee_core.a

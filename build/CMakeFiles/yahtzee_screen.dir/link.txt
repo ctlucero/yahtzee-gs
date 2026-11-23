@@ -1,0 +1,2 @@
+/usr/bin/ar qc libyahtzee_screen.a CMakeFiles/yahtzee_screen.dir/src/screen/canvas.cpp.o CMakeFiles/yahtzee_screen.dir/src/screen/app.cpp.o
+/usr/bin/ranlib libyahtzee_screen.a

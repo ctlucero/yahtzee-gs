@@ -4,7 +4,8 @@
   <name>Yahtzee</name>
   <summary>The classic dice game, ported from the Apple IIgs</summary>
   <metadata_license>CC0-1.0</metadata_license>
-  <project_license>LicenseRef-freeware</project_license>
+  <project_license>PolyForm-Noncommercial-1.0.0</project_license>
+  <url type="homepage">https://github.com/ctlucero/yahtzee-gs</url>
   <description>
     <p>
       A faithful native port of YAHTZEE v1.1 for the Apple IIgs, written by
@@ -21,6 +22,7 @@
   <categories><category>Game</category><category>BoardGame</category></categories>
   <content_rating type="oars-1.1"/>
   <releases>
+    <release version="1.1" date="2026-11-22"><description><p>First public release on GitHub: a ready-to-run download with an install script, build instructions for the major distributions, and the PolyForm Noncommercial license, matching the original's "distribute freely but do not sell". The application menu entry now works even when ~/.local/bin is not on the PATH.</p></description></release>
     <release version="0.4.0" date="2026-10-24"><description><p>New Game, Options... with an optional Yahtzee Bonus rule and a Modern Roll dice source. Fixes leftover digits when a score total is redrawn.</p></description></release>
     <release version="0.3.0" date="2026-10-02"><description><p>First playable build.</p></description></release>
   </releases>

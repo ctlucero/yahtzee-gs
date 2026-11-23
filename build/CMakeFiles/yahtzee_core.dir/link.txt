@@ -1,2 +1,0 @@
-/usr/bin/ar qc libyahtzee_core.a CMakeFiles/yahtzee_core.dir/src/core/scoring.cpp.o CMakeFiles/yahtzee_core.dir/src/core/computer.cpp.o CMakeFiles/yahtzee_core.dir/src/core/game.cpp.o
-/usr/bin/ranlib libyahtzee_core.a

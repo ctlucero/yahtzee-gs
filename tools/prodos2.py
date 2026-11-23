@@ -1,5 +1,7 @@
+"""List files on a ProDOS disk image.
+Usage: PRODOS_IMAGE=path/to/disk.hdv python3 tools/prodos2.py [/DIR/PATH]"""
 import struct,sys,os
-img=open('/mnt/user-data/uploads/System_6_0_4_and_Free_Games.hdv','rb').read()
+img=open(os.environ.get('PRODOS_IMAGE','disk.hdv'),'rb').read()
 blk=lambda n: img[n*512:(n+1)*512]
 def entries(key):
     b=key; first=True

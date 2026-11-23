@@ -1,4 +1,0 @@
-/usr/local/bin/yahtzee-gs
-/usr/local/share/applications/io.github.yahtzee_gs.Yahtzee.desktop
-/usr/local/share/metainfo/io.github.yahtzee_gs.Yahtzee.metainfo.xml
-/usr/local/share/icons/hicolor/scalable/apps/io.github.yahtzee_gs.Yahtzee.svg

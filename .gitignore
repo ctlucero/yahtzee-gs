@@ -1,0 +1,20 @@
+# CMake build trees
+/build/
+/build-*/
+/cmake-build-*/
+CMakeUserPresets.json
+
+# Release packaging output
+/dist/
+
+# Python
+__pycache__/
+*.pyc
+
+# Original program and disk images (not redistributed here)
+/YAHTZEE
+*.hdv
+*.2mg
+*.po
+YAHTZEE_disasm.s
+/renders/

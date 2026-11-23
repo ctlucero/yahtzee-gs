@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.16)
-project(yahtzee-gs VERSION 0.4.0 LANGUAGES CXX)
+project(yahtzee-gs VERSION 1.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -31,7 +31,12 @@ if(BUILD_QT_APP)
     target_link_libraries(yahtzee-gs PRIVATE yahtzee_screen Qt6::Widgets)
     include(GNUInstallDirs)
     install(TARGETS yahtzee-gs RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
-    install(FILES packaging/${APP_ID}.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
+    # Point the launcher entry at the installed program by full path, so it
+    # works even when the install prefix's bin is not on the session's PATH.
+    file(READ packaging/${APP_ID}.desktop _desktop)
+    string(REGEX REPLACE "\nExec=[^\n]*" "\nExec=${CMAKE_INSTALL_FULL_BINDIR}/yahtzee-gs" _desktop "${_desktop}")
+    file(WRITE ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop "${_desktop}")
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${APP_ID}.desktop DESTINATION ${CMAKE_INSTALL_DATADIR}/applications)
     install(FILES packaging/${APP_ID}.metainfo.xml DESTINATION ${CMAKE_INSTALL_DATADIR}/metainfo)
     install(FILES packaging/${APP_ID}.svg DESTINATION ${CMAKE_INSTALL_DATADIR}/icons/hicolor/scalable/apps)
 endif()

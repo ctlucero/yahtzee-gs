@@ -30,12 +30,84 @@ them on, and both are remembered between runs.
   the game's own seeded generator, with no rounding bias between faces.
   This can be switched at any time.
 
+## Download and install
 
-## Build (needs Qt 6 development packages)
+Download `yahtzee-gs-<version>-linux-x86_64.tar.gz` from the
+[Releases page](https://github.com/ctlucero/yahtzee-gs/releases), then:
 
-cmake -B build -DCMAKE_BUILD_TYPE=Release
-cmake --build build
-ctest --test-dir build --output-on-failure
-./build/yahtzee-gs
+```sh
+tar xzf yahtzee-gs-*-linux-x86_64.tar.gz
+cd yahtzee-gs-*-linux-x86_64
+./install.sh
+```
 
+Yahtzee then appears in your application menu under Games. This installs it
+for you only, into `~/.local`; to install it for all users instead, run
+`sudo ./install.sh /usr/local`. To remove it, run `./install.sh --uninstall`
+(or `sudo ./install.sh --uninstall /usr/local`).
 
+The download is for 64-bit Intel/AMD PCs and needs Qt 6 (6.4 or newer) and
+a fairly recent distribution: Ubuntu 24.04 or newer, Debian 13, Fedora 40 or
+newer, Arch, or openSUSE Tumbleweed. If Qt 6 is missing, `install.sh` says
+which package to install. On older or other systems, build from source.
+
+## Build from source
+
+You need a C++17 compiler, CMake 3.16 or newer and the Qt 6 development
+files:
+
+```sh
+sudo pacman -S --needed base-devel cmake qt6-base        # Arch
+sudo apt install build-essential cmake qt6-base-dev      # Debian / Ubuntu
+sudo dnf install gcc-c++ cmake qt6-qtbase-devel          # Fedora
+```
+
+Then, from the source folder:
+
+```sh
+cmake -B build -DCMAKE_BUILD_TYPE=Release -DCMAKE_INSTALL_PREFIX="$HOME/.local"
+cmake --build build -j"$(nproc)"
+ctest --test-dir build --output-on-failure   # optional: run the tests
+cmake --install build
+```
+
+You can also run it without installing: `./build/yahtzee-gs`. For a
+system-wide install, use `-DCMAKE_INSTALL_PREFIX=/usr/local` and
+`sudo cmake --install build`. To uninstall, delete the files listed in
+`build/install_manifest.txt` (`xargs rm -v < build/install_manifest.txt`).
+
+## Layout
+
+- `src/core/` game logic in plain C++: scoring, computer player, game flow
+- `src/screen/` the IIgs screen and the original's event handling and drawing
+- `src/qt/` the Qt window
+- `packaging/` desktop entry, AppStream metadata, icon, and the release's
+  `install.sh`
+- `tests/` tests; `tests/data/original_vectors.txt` came from running the
+  original 65816 code in an emulator
+- `tools/` Python tools used to recover the game from the original: disk and
+  OMF readers, disassembler, 65816 emulator. They need the original `YAHTZEE`
+  file, which is not included; point `YAHTZEE_BIN` at it and run them with
+  `PYTHONPATH=tools`.
+- `docs/RECOVERED.md` what was learned from the disassembly
+
+## Making a release
+
+Update the version in `CMakeLists.txt` and add a `<release>` entry to
+`packaging/io.github.yahtzee_gs.Yahtzee.metainfo.xml`, commit, then push a
+tag:
+
+```sh
+git tag v1.2
+git push origin v1.2
+```
+
+GitHub Actions builds and tests it, then creates the release with the
+download attached.
+
+## License
+
+The original YAHTZEE v1.1 is by David W. Buell, released as freeware:
+"Distribute freely but do not sell". This port follows the same terms under
+the [PolyForm Noncommercial License 1.0.0](LICENSE): you may use, copy,
+change and share it for any noncommercial purpose, but not sell it.

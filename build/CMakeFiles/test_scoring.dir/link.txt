@@ -1,1 +1,0 @@
-/usr/bin/c++ -O3 -DNDEBUG -Wl,--dependency-file=CMakeFiles/test_scoring.dir/link.d CMakeFiles/test_scoring.dir/tests/test_scoring.cpp.o -o test_scoring  libyahtzee_core.a

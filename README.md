@@ -50,22 +50,8 @@ them on, and both are remembered between runs.
   the game's own seeded generator, with no rounding bias between faces.
   This can be switched at any time.
 
-## Build and install as a Flatpak
 
-You need `flatpak-builder` and the KDE runtime from Flathub:
-
-```sh
-flatpak remote-add --user --if-not-exists flathub https://dl.flathub.org/repo/flathub.flatpakrepo
-flatpak install --user flathub org.kde.Platform//6.8 org.kde.Sdk//6.8
-flatpak-builder --user --install --force-clean build-dir packaging/io.github.yahtzee_gs.Yahtzee.yml
-flatpak run io.github.yahtzee_gs.Yahtzee
-```
-
-After installing, Yahtzee appears in your application launcher under Games.
-If 6.8 is no longer offered, change `runtime-version` in the manifest to a
-current KDE runtime version (`flatpak remote-ls flathub | grep org.kde.Platform`).
-
-## Build without Flatpak (needs Qt 6 development packages)
+## Build (needs Qt 6 development packages)
 
 ```sh
 cmake -B build -DCMAKE_BUILD_TYPE=Release
@@ -74,19 +60,4 @@ ctest --test-dir build --output-on-failure
 ./build/yahtzee-gs
 ```
 
-## Layout
 
-- `src/core/` game logic in plain C++: scoring, computer player, game flow
-- `src/screen/` the IIgs screen (`canvas`, a small QuickDraw look-alike) and
-  the original's event handling and drawing, ported procedure by procedure (`app`)
-- `src/qt/` the Qt window: scaling, mouse, keys, 60 Hz tick
-- `assets/fonts/gs8.txt` an original bitmap font in the style of the IIgs system font,
-  sized so the original's text layouts fit (run `tools/export_assets.py` after editing)
-- `packaging/` Flatpak manifest, desktop entry, AppStream metadata, icon
-- `tests/` tests; `tests/data/original_vectors.txt` came from running the
-  original 65816 code in an emulator
-- `tools/` the Python tools: disk/OMF readers, disassembler, 65816 emulator
-  with a QuickDraw/Toolbox layer (`qdemu.py`) that runs the original's drawing
-  code, asset export and render comparison (set `YAHTZEE_BIN` to the original
-  `YAHTZEE` file and `PYTHONPATH=tools`)
-- `docs/RECOVERED.md` what was learned from the disassembly
